@@ -48,7 +48,7 @@ bootstrap() {
    change_year
    change_user
    new=$req
-   change REQ $rec
+   change RC $rec
    mv main.c $name.c
    rm -rf .git/
    git init
