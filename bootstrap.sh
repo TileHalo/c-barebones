@@ -19,9 +19,9 @@ change_name() {
 }
 
 change_user() {
-  name=$(git config user.name)
+  uname=$(git config user.name)
   email=$(git config user.email)
-  new="$name <$email>"
+  new="$uname <$email>"
 
   change "<OWNER>" $new
 }
@@ -52,6 +52,7 @@ bootstrap() {
    mv main.c $name.c
    rm -rf .git/
    git init
+   git add .
    git add -u
    git reset -- bootstrap.sh
    git commit -m "Initialized $name"
