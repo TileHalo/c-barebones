@@ -18,6 +18,14 @@ change_name() {
   change $name $n
 }
 
+change_user() {
+  name=$(git config user.name)
+  email=$(git config user.email)
+  new="$name <$email>"
+
+  change "<OWNER>" $new
+}
+
 bootstrap() {
   name=$1
   rec=
@@ -34,6 +42,7 @@ bootstrap() {
    done
    change_name $name
    change_year
+   change_user
 }
 
 main() {
