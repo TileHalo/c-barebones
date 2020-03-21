@@ -2,20 +2,20 @@
 # bootstraps project directory: WRIG: removes itself
 
 change() {
-  echo $1 $2
-  find . -type f -name "*" -print0 | xargs -0 sed -i "s/$1/$2/g"
+  echo $new
+  find . -type f -name "*" -print0 | xargs -0 sed -i "s/$1/$new/g"
 }
 
 change_year() {
-  year="2020"
-  y=$(date +"%Y")
-  change $year $y
+  year="<YEAR>"
+  new=$(date +"%Y")
+  change $year $new
 }
 
 change_name() {
   name="\[NAME\]"
-  n=$1
-  change $name $n
+  new=$1
+  change $name $new
 }
 
 change_user() {
@@ -40,9 +40,22 @@ bootstrap() {
      esac
      shift
    done
+   if [ -z "$name" ]; then
+     echo "No name given, give name"
+     read name
+   fi
    change_name $name
    change_year
    change_user
+   new=$req
+   change REQ $rec
+   mv main.c $name.c
+   rm -rf .git/
+   git init
+   git add -u
+   git reset -- bootstrap.sh
+   git commit -m "Initialized $name"
+   rm -rf bootstrap.sh
 }
 
 main() {
