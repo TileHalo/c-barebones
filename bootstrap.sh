@@ -13,9 +13,9 @@ change_year() {
 }
 
 change_name() {
-  name="\[NAME\]"
+  pattern="\[NAME\]"
   new=$1
-  change $name $new
+  change $pattern $new
 }
 
 change_user() {
