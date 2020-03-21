@@ -1,0 +1,6 @@
+*.o
+[NAME]
+[NAME]-test
+lib[NAME].a
+lib[NAME].so
+**/*.o
