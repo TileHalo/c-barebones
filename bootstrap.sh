@@ -28,7 +28,7 @@ change_user() {
 
 bootstrap() {
   name=$1
-  rec=
+  rec=RC
   while [ "$1" != "" ]; do
     case $1 in
       -r | --rec )  shift
@@ -47,8 +47,8 @@ bootstrap() {
    change_name $name
    change_year
    change_user
-   new=$req
-   change REQ $rec
+   new=$rec
+   change RC $rec
    mv main.c $name.c
    rm -rf .git/
    git init
